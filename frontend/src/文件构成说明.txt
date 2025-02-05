@@ -1,0 +1,23 @@
+1. App（CSS和JavaScript文件）：
+   - App.css: 这是应用程序的主要样式文件，用于定义App组件的样式。
+   - App.js: 这是应用程序的主要组件文件，通常包含应用程序的主要结构和逻辑。
+
+2. App.test.js:
+   这是App组件的测试文件。它包含针对App组件的单元测试，用于确保组件按预期工作。
+
+3. index（CSS和JavaScript文件）：
+   - index.css: 这通常包含全局样式定义。
+   - index.js: 这是应用程序的入口点，它通常用于渲染主App组件并进行一些全局设置。
+
+4. logo（Microsoft Edge HT...）:
+   这可能是应用程序使用的logo图像文件。
+
+5. reportWebVitals.js:
+   这个文件用于报告Web Vitals性能指标，帮助评估和优化应用性能。
+
+6. setupTests.js:
+   这个文件用于设置测试环境，通常包含一些全局的测试配置。
+
+这种文件结构是Create React App（CRA）创建的典型结构。它提供了一个组织良好的起点，包括了开发React应用所需的基本文件。每个文件都有特定的用途，共同构成了一个完整的React应用程序框架。
+
+总结：App.js和index.js是最核心的文件，它们定义了应用的主要结构和入口点。测试文件（如App.test.js）和性能监控文件（如reportWebVitals.js）则帮助确保应用的质量和性能。

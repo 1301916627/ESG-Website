@@ -1,0 +1,8 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* 其他全局样式可以添加在这里 */

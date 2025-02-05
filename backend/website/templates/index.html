@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Home</title>
+  </head>
+
+  <body>
+    <div style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 2rem; margin-left: 6%; margin-right: 6%;">
+      <h2>点击下面链接测试</h2>
+      示例1:&nbsp;<a href="/api/query_data?metric_value=10,200">/api/query_data?metric_value=10,200</a><br>
+      示例2:&nbsp;<a href="/api/query_data?metric_value=100">/api/query_data?metric_value=100</a><br>
+      示例3:&nbsp;<a href="/api/query_data?metric_value=10,200&page=2&limit=100">/api/query_data?metric_value=10,200&page=2&limit=100</a><br>
+      示例4:&nbsp;<a href="/api/query_data?metric_value=10,200&metric_name=AUDITCOMMNONEXECMEMBERS&page=2&limit=100">/api/query_data?metric_value=10,200&metric_name=AUDITCOMMNONEXECMEMBERS&page=2&limit=100</a><br>
+      示例5:&nbsp;<a href="/api/query_data?metric_value=10,200&metric_name=.*MMN.*&page=2&limit=100">/api/query_data?metric_value=10,200&metric_name=.*MMN.*&page=2&limit=100</a><br>
+      示例6:&nbsp;<a href="/api/query_data?metric_value=10,200&metric_name=.*MMN.*&metric_year=2021-01-01,2022-01-01&page=2&limit=100">/api/query_data?metric_value=10,200&metric_name=.*MMN.*&metric_year=2021-01-01,2022-01-01&page=2&limit=100</a><br>
+      示例7:&nbsp;<a href="/api/query_data?metric_value=100&pillar=S">/api/query_data?metric_value=100&pillar=S</a><br>
+    </div>
+
+    <div style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 2rem; margin-left: 6%; margin-right: 6%;">
+      <h2>接口说明</h2>
+接口 1：<br>
+接口路径：/api/get_data_key<br>
+请求方法：GET 、POST<br>
+功能描述：获取 mongodb.ecom_collection 集合中全部文档或字段名，并以列表形式返回。<br>
+<br>
+接口响应示例：<br>
+成功：["字段 1", "字段 2", "..."]<br>
+失败：{"result_code": 401, "message": "An error occurred: [具体错误信息]"}<br>
+<br>
+======================================================================================<br>
+接口 2：<br>
+接口路径：/api/query_data<br>
+请求方法：GET 、POST<br>
+<br>
+参数说明：<br>
+page（可选，整数）：分页页码，默认为 1。<br>
+limit（可选，整数）：每页显示数量，默认为 10。<br>
+<br>
+其他任意参数：用于构建查询条件。<br>
+功能描述：根据指定的分页参数和其他查询参数，对 mongodb.ecom_collection 进行查询。<br>
+对于数值类型字段，可支持范围查询（通过逗号分隔两个值）。<br>
+对于日期类型字段，可支持范围查询（通过逗号分隔两个日期字符串）。<br>
+对于其他类型字段，可支持正则表达式匹配（通过 .* 表示）。<br>
+<br>
+接口查询示例:<br>
+http://localhost:5000/api/query_data?metric_value=10,200<br>
+解释: 查询metric_value字段的值大于10和<小于200的第1页数据，每页10条数据。<br>
+<br>
+http://localhost:5000/api/query_data?metric_value=100<br>
+解释: 查询metric_value字段的值等于100的第1页数据，每页10条数据。<br>
+<br>
+http://localhost:5000/api/query_data?metric_value=10,200&page=2&limit=100<br>
+解释: 查询metric_value字段的值大于10和<小于200的第2页数据，每页100条数据。<br>
+<br>
+http://localhost:5000/api/query_data?metric_value=10,200&metric_name=AUDITCOMMNONEXECMEMBERS&page=2&limit=100<br>
+解释: 查询metric_value字段的值大于10和<小于200以及metric_name等于AUDITCOMMNONEXECMEMBERS的第2页数据，每页100条数据。<br>
+<br>
+http://localhost:5000/api/query_data?metric_value=10,200&metric_name=.*MMN.*&page=2&limit=100<br>
+解释: 查询metric_value字段的值大于10和<小于200以及metric_name包含MMN的第2页数据，每页100条数据。<br>
+<br>
+http://localhost:5000/api/query_data?metric_value=10,200&metric_name=.*MMN.*&metric_year=2021-01-01,2022-01-01&page=2&limit=100<br>
+解释: 查询metric_value字段的值大于10和<小于200以及metric_name包含MMN以及metric_year的时间大于2021-01-01小于2022-01-01的第2页数据，每页100条数据。<br>
+<br>
+上面的查询示例中可以支持数据库里全部字段，具体有哪些字段，见数据库，可以多个字段组合查询。<br>
+另外上面的示例查询都是用的GET协议，也支持POST协议。<br>
+<br>
+关于时间问题：<br>
+   由于数据库里的时间不是统一的datatime数据，有的时间是字符串数据，会导致有的数据查询不出来，<br>
+   解决方法是，要将csv或json数据文件里的时间数据统一化为时间字符串后，也就是重新导入到数据库会全部为datatime类型。<br>
+<br>
+接口响应示例：<br>
+成功：<br>
+{<br>
+  &nbsp;&nbsp;"data": [数据列表],<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;"pagination": {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;"current_page": 当前页码,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;"total_pages": 总页数,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;"total_items": 总记录数<br>
+        &nbsp;&nbsp;}<br>
+}<br>
+失败：{"result_code": 401, "message": "An error occurred: [具体错误信息]"}<br>
+
+      </div>
+
+
+    <div style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 2rem; margin-left: 6%; margin-right: 6%;">
+      <h2>服务器环境与运行说明</h2>
+         1.安装好python3环境<br>
+         2.安装好MongoDB<br>
+         3.运行这个命令导入数据库: mongoimport --db ecom --collection ecom_collection --file admin.data1.json --jsonArray<br>
+         4.根据情况修改server/website/mongodb.py里面的配置<br>
+         5.用python3运行server/run.py<br>
+         6.浏览器里输入http://localhost:5000/即可进入本页面<br>
+    </div>
+
+  </body>
+</html>

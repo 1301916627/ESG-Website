@@ -1,0 +1,223 @@
+/* Main layout */
+.compare-page-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1e2532;
+  color: white;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* ESG Metrics Filter section */
+.filter-section {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+  color: #1e2532;
+}
+
+/* Filter grid layout */
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-item label {
+  font-size: 1rem;
+  color: #1e2532;
+  margin-bottom: 0.5rem;
+}
+
+/* Select styles */
+.select-container {
+  position: relative;
+}
+
+select, .custom-select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background-color: white;
+  font-size: 1rem;
+  color: #4a5568;
+  appearance: none;
+}
+
+/* Button styles */
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: flex-end;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.btn-primary {
+  background-color: #38b2ac;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #48bb78;
+  color: white;
+}
+
+.btn-tertiary {
+  background-color: #4299e1;
+  color: white;
+}
+
+/* ESG Pillars section */
+.pillar-section {
+  margin-top: 2rem;
+}
+
+.pillar-grid {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 1.5rem;
+}
+
+.pillar-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pillar-btn {
+  padding: 1rem;
+  text-align: center;
+  background-color: #f7fafc;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.pillar-btn:hover {
+  background-color: #e2e8f0;
+}
+
+.pillar-btn.active {
+  background-color: #e2e8f0;
+  font-weight: 500;
+}
+
+/* Metrics display section */
+.metrics-display {
+  background-color: #f8fafc;
+  border-radius: 6px;
+  padding: 1.5rem;
+}
+
+.metrics-header {
+  font-size: 1.25rem;
+  color: #1e2532;
+  margin-bottom: 1rem;
+}
+
+.metrics-description {
+  color: #4a5568;
+  margin-bottom: 2rem;
+}
+
+/* Charts section */
+.charts-container {
+  margin-top: 2rem;
+}
+
+.chart {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+/* Framework selection and weight inputs */
+.framework-section {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.weight-inputs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.weight-input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.weight-input-group label {
+  margin-bottom: 0.5rem;
+  color: #4a5568;
+}
+
+.weight-input-group input {
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+/* Utility classes */
+.text-error {
+  color: #e53e3e;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.badge-green {
+  background-color: #48bb78;
+  color: white;
+}
